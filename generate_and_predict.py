@@ -1,8 +1,10 @@
 import random
 import requests
-import json
+import pandas as pd
 
 API_URL = "http://136.119.155.126/predict"
+
+rows = []
 
 def random_sample():
     return {
@@ -23,5 +25,11 @@ def random_sample():
 
 for i in range(100):
     sample = random_sample()
-    response = requests.post(API_URL, json=sample)
-    print(f"{i+1}: {response.json()}")
+    rows.append(sample)
+    requests.post(API_URL, json=sample)
+
+# Save inference data
+df_inf = pd.DataFrame(rows)
+df_inf.to_csv("inference_data.csv", index=False)
+
+print("Saved inference_data.csv")
