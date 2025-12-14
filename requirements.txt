@@ -6,3 +6,9 @@ matplotlib
 seaborn
 shap
 fairlearn
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+joblib
